@@ -1,0 +1,136 @@
+name: Apply minimalist travel UI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/minimal-v4.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  redesign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Redesign page
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('index.html')
+          html=p.read_text(encoding='utf-8')
+
+          css=r'''
+          /* minimal-v4 */
+          :root{--bg:#f7f7f5;--paper:#fff;--ink:#191919;--sub:#6f6f6b;--line:#e7e7e2;--accent:#ff735c;--accent-soft:#fff0ec;--green:#2f7d67}
+          html{background:var(--bg)}
+          body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;line-height:1.55;letter-spacing:-.02em}
+          .wrap{max-width:1040px;margin:0 auto;padding:28px 22px 90px}
+          h1,h2,h3{letter-spacing:-.04em;color:var(--ink)}
+          h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
+          .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:6px 0 22px;border-bottom:1px solid var(--line)}
+          .brand-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+          .topbar h1{margin:0;font-size:38px;line-height:1.08;font-weight:760}.top-sub{margin-top:8px;color:var(--sub);font-size:14px}
+          .top-meta{text-align:right;font-size:12px;color:var(--sub);line-height:1.7;white-space:nowrap}.top-meta strong{color:var(--ink)}
+          .top-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.top-actions button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:8px 11px;font-size:12px;font-weight:750;cursor:pointer}.top-actions button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+          .principle{display:flex;gap:10px;align-items:flex-start;padding:14px 0 18px;color:var(--sub);font-size:12px}.principle i{display:block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}.principle b{color:var(--ink)}
+          .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:520px;margin:0 auto 28px;padding:4px;background:#ededE9;border-radius:14px;position:sticky;top:10px;z-index:20}.tab{border:0!important;background:transparent!important;color:#777!important;border-radius:10px!important;min-height:42px;padding:7px 10px!important;font-size:12px!important;font-weight:750!important;cursor:pointer}.tab.active{background:#fff!important;color:var(--ink)!important;box-shadow:0 1px 3px rgba(0,0,0,.08)!important}
+          .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:14px}.section-head p{margin:0;color:var(--sub);font-size:12px}
+          .day-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px;margin-bottom:18px}.day-tab{min-width:110px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;cursor:pointer}.day-tab small{display:block;color:var(--sub);font-size:10px;margin-bottom:2px}.day-tab b{font-size:13px}.day-tab.active{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+          .it-day{display:none}.it-day.active{display:block}.day-title{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:0 0 8px}.day-title h3{margin:0;font-size:20px}.day-title span{font-size:11px;color:var(--sub);text-align:right}
+          .timeline{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.tl-row{display:grid;grid-template-columns:112px 1fr;gap:18px;padding:15px 16px;border-top:1px solid var(--line)}.tl-row:first-child{border-top:0}.tl-time{font-size:11px;color:var(--accent);font-weight:800}.tl-main b{font-size:14px}.tl-main p{margin:3px 0 0;color:var(--sub);font-size:12px}.tl-row.key{background:#fff8f5}.tag-mini{display:inline-block;margin-left:6px;background:var(--accent-soft);color:#b84e3d;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:800;vertical-align:1px}
+          .day-route{margin-top:10px}.day-route a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:750}
+          .filters{gap:7px!important;margin:10px 0 16px!important}.filter{border:1px solid var(--line)!important;background:#fff!important;color:var(--sub)!important;border-radius:999px!important;padding:8px 11px!important;font-size:11px!important}.filter.active{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
+          .candidate{background:#fff!important;border:1px solid var(--line)!important;border-radius:14px!important;padding:12px 14px!important;color:var(--sub)!important}.candidate strong{color:var(--ink)!important}
+          .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.card{background:#fff!important;border:1px solid var(--line)!important;border-radius:16px!important;padding:16px!important;box-shadow:none!important;min-height:auto!important}.card>.meta{font-size:10px!important;color:#8b8b86!important}.card h3{font-size:17px!important;margin:7px 0 4px!important}.rate{color:#d98833!important;font-size:12px}.tag{background:#f4f4f0!important;color:#6f6f6b!important;border-radius:999px!important;font-size:10px!important;padding:4px 8px!important}.card p{font-size:12px;color:#585854}.baby{background:#f3f8f6!important;color:#4b6d63!important;border-radius:10px!important;font-size:11px!important;padding:8px 9px!important}.save{font-size:10px!important;color:#666}.save input{accent-color:var(--accent)}
+          .btn{background:var(--ink)!important;color:#fff!important;border-radius:9px!important;font-size:11px!important;padding:8px 10px!important}.btn.alt{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+          .mapbox{grid-template-columns:320px 1fr!important;gap:12px!important}.maplist,.mapframe{background:#fff!important;border:1px solid var(--line)!important;border-radius:16px!important}.maplist{padding:8px!important}.item{border:0!important;border-radius:10px;padding:10px!important}.item:hover{background:#f6f6f3}
+          #prep>.box,.check-section,.prep-summary{background:#fff!important;border:1px solid var(--line)!important;box-shadow:none!important}.check-section{border-radius:16px!important}.prep-summary{border-radius:12px!important}.prep-summary.complete{background:#f3f8f6!important}.check{background:#fafaf8!important;border:1px solid #ecece7!important;border-radius:10px!important;font-size:12px}.check.done{background:#f3f8f6!important;border-color:#dce9e4!important}.check input{accent-color:var(--accent)}.progress i,.mini-progress i{background:var(--accent)!important}
+          @media(max-width:760px){.wrap{padding:18px 12px 95px}.topbar{display:block}.topbar h1{font-size:30px}.top-meta{text-align:left;margin-top:14px;white-space:normal}.tabs{position:fixed;top:auto;bottom:calc(10px + env(safe-area-inset-bottom));left:10px;right:10px;max-width:none;margin:0;z-index:50}.section-head{display:block}.section-head p{margin-top:4px}.day-tabs{margin-left:-2px;margin-right:-2px}.day-tab{min-width:105px}.tl-row{grid-template-columns:82px 1fr;gap:10px;padding:13px 12px}.day-title{display:block}.day-title span{display:block;text-align:left;margin-top:3px}.grid{grid-template-columns:1fr!important}.mapbox{grid-template-columns:1fr!important}.mapframe{height:330px!important}.prep-overview{display:flex!important;overflow:auto}.prep-summary{min-width:150px}}
+          '''
+          if '/* minimal-v4 */' not in html:
+              html=html.replace('</style>',css+'\n</style>',1)
+
+          top=r'''
+          <header class="topbar">
+            <div>
+              <div class="brand-kicker">OKINAWA · 2026</div>
+              <h1>이린이의 첫 오키나와</h1>
+              <div class="top-sub">첫 바다를 중심으로, 무리하지 않고 잘 쉬는 3박 4일</div>
+              <div class="top-actions"><button class="primary" id="share">현재 상태 공유</button><button id="copy">링크 복사</button><span id="sharemsg" class="meta"></span></div>
+            </div>
+            <div class="top-meta"><strong>9.22 — 9.25</strong><br>RF394 / RF393<br>Hilton Sesoko 2박 · HOTEL COLLECTIVE 1박</div>
+          </header>
+          <div class="principle"><i></i><div><b>여행 기준</b> · 이린이의 첫 바다와 낮잠이 1순위. 쇼핑·관광·식당은 그 사이에 넣기.</div></div>
+          <nav class="tabs"><button class="tab active" data-p="plan">일정</button><button class="tab" data-p="food">맛집·카페</button><button class="tab" data-p="map">내 후보</button><button class="tab" data-p="prep">여행 준비</button></nav>
+          '''
+          html,n=re.subn(r'<header class="hero-v3">.*?</nav>',top,html,count=1,flags=re.S)
+          if n!=1:
+              raise SystemExit(f'header replacement count={n}')
+
+          plan=r'''
+          <section id="plan" class="panel active">
+            <div class="section-head"><div><h2>일정</h2><p>하루씩 눌러서 보는 간단한 일정표</p></div></div>
+            <div class="day-tabs" role="tablist">
+              <button class="day-tab active" data-day="d1"><small>9/22 화</small><b>도착 · 첫 바다</b></button>
+              <button class="day-tab" data-day="d2"><small>9/23 수</small><b>츄라우미 · 물놀이</b></button>
+              <button class="day-tab" data-day="d3"><small>9/24 목</small><b>세소코 · 나하</b></button>
+              <button class="day-tab" data-day="d4"><small>9/25 금</small><b>공항</b></button>
+            </div>
+            <div class="it-day active" id="d1"><div class="day-title"><h3>공항 → 라이카무 → Hilton Sesoko</h3><span>도착일 · 첫 바다 확보</span></div><div class="timeline">
+              <div class="tl-row"><div class="tl-time">도착 후</div><div class="tl-main"><b>렌터카 인수</b><p>짐 정리 후 라이카무로 이동.</p></div></div>
+              <div class="tl-row"><div class="tl-time">점심 ~ 13:20</div><div class="tl-main"><b>AEON MALL Okinawa Rycom</b><p>점심 · 이린이 휴식 · 바나나/과일/물 · 몽벨.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">13:30 전후</div><div class="tl-main"><b>라이카무 출발 <span class="tag-mini">늦어도 13:45</span></b><p>세소코 첫 바다 시간을 확보.</p></div></div>
+              <div class="tl-row"><div class="tl-time">15:00경</div><div class="tl-main"><b>Hilton Sesoko 체크인</b><p>수영복 가방은 따로 빼두기.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">15:40 ~ 16:50</div><div class="tl-main"><b>세소코 첫 바다 <span class="tag-mini">최우선</span></b><p>파도·바람·운영상황에 따라 짧게라도 경험하기.</p></div></div>
+              <div class="tl-row"><div class="tl-time">이후</div><div class="tl-main"><b>수영장 → 객실 → 저녁</b><p>피곤하면 호텔 식사로 마무리.</p></div></div>
+            </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Naha+Airport&destination=Hilton+Okinawa+Sesoko+Resort&waypoints=AEON+MALL+Okinawa+Rycom&travelmode=driving">Google 경로 열기 ↗</a></div></div>
+
+            <div class="it-day" id="d2"><div class="day-title"><h3>츄라우미 + 모토부 + 바다</h3><span>관광보다 낮잠과 물놀이 우선</span></div><div class="timeline">
+              <div class="tl-row"><div class="tl-time">07:30 ~ 09:00</div><div class="tl-main"><b>호텔 조식</b><p>이린이 식사와 컨디션 우선.</p></div></div>
+              <div class="tl-row"><div class="tl-time">09:15</div><div class="tl-main"><b>호텔 출발</b><p>츄라우미로 이동.</p></div></div>
+              <div class="tl-row"><div class="tl-time">09:30 ~ 12:00</div><div class="tl-main"><b>츄라우미 수족관</b><p>핵심 위주 2~2.5시간.</p></div></div>
+              <div class="tl-row"><div class="tl-time">12:00 ~ 13:00</div><div class="tl-main"><b>모토부 점심</b><p>저장한 후보 중 현 위치와 대기시간 보고 선택.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">13:30 ~ 15:30</div><div class="tl-main"><b>호텔 낮잠 <span class="tag-mini">보호시간</span></b><p>오후 바다를 위해 낮잠 유지.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">15:30 이후</div><div class="tl-main"><b>세소코 바다 / 수영장</b><p>장거리 추가 관광 없이 여유롭게.</p></div></div>
+            </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Okinawa+Churaumi+Aquarium&travelmode=driving">Google 경로 열기 ↗</a></div></div>
+
+            <div class="it-day" id="d3"><div class="day-title"><h3>세소코 → 나하 국제거리</h3><span>가족 먼저 호텔 · 아빠만 렌터카 반납</span></div><div class="timeline">
+              <div class="tl-row"><div class="tl-time">오전</div><div class="tl-main"><b>세소코 여유시간</b><p>전날 바다가 부족했다면 오전 보완.</p></div></div>
+              <div class="tl-row"><div class="tl-time">14:30 ~ 15:00</div><div class="tl-main"><b>HOTEL COLLECTIVE 도착</b><p>아내·이린이·유모차·짐 먼저 하차 후 체크인.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">15:30 전후</div><div class="tl-main"><b>아빠만 렌터카 반납 출발</b><p>주유 영수증 포함 반납 준비.</p></div></div>
+              <div class="tl-row"><div class="tl-time">16:30 목표</div><div class="tl-main"><b>렌터카 반납 완료</b><p>17:00 셔틀 여유 확보.</p></div></div>
+              <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-main"><b>셔틀 → 겐초마에</b><p>하차 후 아빠만 호텔까지 도보 복귀.</p></div></div>
+              <div class="tl-row"><div class="tl-time">저녁</div><div class="tl-main"><b>국제거리 산책 + 저녁</b><p>이린이 컨디션 보고 가까운 저장 후보 선택.</p></div></div>
+            </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Hotel+Collective+Naha&travelmode=driving">Google 경로 열기 ↗</a></div></div>
+
+            <div class="it-day" id="d4"><div class="day-title"><h3>HOTEL COLLECTIVE → 나하공항</h3><span>08:00 공항 도착 목표</span></div><div class="timeline">
+              <div class="tl-row"><div class="tl-time">06:30 전후</div><div class="tl-main"><b>기상 · 최종 짐 점검</b><p>여권·휴대폰·충전기·이린이 물품 확인.</p></div></div>
+              <div class="tl-row key"><div class="tl-time">07:15 ~ 07:20</div><div class="tl-main"><b>호텔 출발</b><p>유모차와 캐리어 이동 시간 감안.</p></div></div>
+              <div class="tl-row"><div class="tl-time">07:30 전후</div><div class="tl-main"><b>겐초마에역</b><p>전날 공식 시간표 재확인.</p></div></div>
+              <div class="tl-row"><div class="tl-time">07:50 전후</div><div class="tl-main"><b>나하공항역 도착</b><p>비나 짐 문제면 택시로 전환.</p></div></div>
+              <div class="tl-row"><div class="tl-time">08:00 목표</div><div class="tl-main"><b>공항 체크인</b><p>RF393 탑승 준비.</p></div></div>
+            </div></div>
+          </section>
+          '''
+          html,n=re.subn(r'<section id="plan" class="panel active">.*?</section>\s*<section id="food"',plan+'\n<section id="food"',html,count=1,flags=re.S)
+          if n!=1:
+              raise SystemExit(f'plan replacement count={n}')
+
+          js=r'''<script>(function(){const root=document.getElementById('plan');if(!root)return;root.querySelectorAll('.day-tab').forEach(btn=>btn.addEventListener('click',()=>{root.querySelectorAll('.day-tab').forEach(x=>x.classList.remove('active'));root.querySelectorAll('.it-day').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const el=document.getElementById(btn.dataset.day);if(el)el.classList.add('active')}));})();</script>'''
+          html=html.replace('</body>',js+'\n</body>',1)
+          p.write_text(html,encoding='utf-8')
+          PY
+      - name: Commit redesign
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git rm -f .github/workflows/minimal-v4.yml || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Simplify travel site into clean minimalist itinerary UI"
+          git push
