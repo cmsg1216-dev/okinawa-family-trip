@@ -101,113 +101,93 @@ h3{color:var(--ink);letter-spacing:-.025em}
   .grid{grid-template-columns:1fr!important;gap:10px!important}.card{min-height:auto;padding:16px!important;border-radius:18px!important}.card:hover{transform:none}.filters{overflow-x:auto;flex-wrap:nowrap!important;padding-bottom:2px;-webkit-overflow-scrolling:touch}.filters::-webkit-scrollbar{display:none}.filter{white-space:nowrap}.mapframe{height:360px!important}.prep-overview{display:flex!important;overflow-x:auto;gap:8px!important;padding-bottom:3px;-webkit-overflow-scrolling:touch}.prep-overview::-webkit-scrollbar{display:none}.prep-summary{min-width:155px}.checkgrid{grid-template-columns:1fr!important}.check-section{padding:14px!important}.hero-actions button{min-height:42px}
 }
 
+
+/* minimal-v4 */
+:root{--bg:#f7f7f5;--paper:#fff;--ink:#191919;--sub:#6f6f6b;--line:#e7e7e2;--accent:#ff735c;--accent-soft:#fff0ec;--green:#2f7d67}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;line-height:1.55;letter-spacing:-.02em}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 22px 90px}
+h1,h2,h3{letter-spacing:-.04em;color:var(--ink)}
+h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:6px 0 22px;border-bottom:1px solid var(--line)}
+.brand-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.topbar h1{margin:0;font-size:38px;line-height:1.08;font-weight:760}.top-sub{margin-top:8px;color:var(--sub);font-size:14px}
+.top-meta{text-align:right;font-size:12px;color:var(--sub);line-height:1.7;white-space:nowrap}.top-meta strong{color:var(--ink)}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.top-actions button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:8px 11px;font-size:12px;font-weight:750;cursor:pointer}.top-actions button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.principle{display:flex;gap:10px;align-items:flex-start;padding:14px 0 18px;color:var(--sub);font-size:12px}.principle i{display:block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}.principle b{color:var(--ink)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:520px;margin:0 auto 28px;padding:4px;background:#ededE9;border-radius:14px;position:sticky;top:10px;z-index:20}.tab{border:0!important;background:transparent!important;color:#777!important;border-radius:10px!important;min-height:42px;padding:7px 10px!important;font-size:12px!important;font-weight:750!important;cursor:pointer}.tab.active{background:#fff!important;color:var(--ink)!important;box-shadow:0 1px 3px rgba(0,0,0,.08)!important}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:14px}.section-head p{margin:0;color:var(--sub);font-size:12px}
+.day-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px;margin-bottom:18px}.day-tab{min-width:110px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;cursor:pointer}.day-tab small{display:block;color:var(--sub);font-size:10px;margin-bottom:2px}.day-tab b{font-size:13px}.day-tab.active{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.it-day{display:none}.it-day.active{display:block}.day-title{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:0 0 8px}.day-title h3{margin:0;font-size:20px}.day-title span{font-size:11px;color:var(--sub);text-align:right}
+.timeline{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.tl-row{display:grid;grid-template-columns:112px 1fr;gap:18px;padding:15px 16px;border-top:1px solid var(--line)}.tl-row:first-child{border-top:0}.tl-time{font-size:11px;color:var(--accent);font-weight:800}.tl-main b{font-size:14px}.tl-main p{margin:3px 0 0;color:var(--sub);font-size:12px}.tl-row.key{background:#fff8f5}.tag-mini{display:inline-block;margin-left:6px;background:var(--accent-soft);color:#b84e3d;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:800;vertical-align:1px}
+.day-route{margin-top:10px}.day-route a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:750}
+.filters{gap:7px!important;margin:10px 0 16px!important}.filter{border:1px solid var(--line)!important;background:#fff!important;color:var(--sub)!important;border-radius:999px!important;padding:8px 11px!important;font-size:11px!important}.filter.active{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
+.candidate{background:#fff!important;border:1px solid var(--line)!important;border-radius:14px!important;padding:12px 14px!important;color:var(--sub)!important}.candidate strong{color:var(--ink)!important}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.card{background:#fff!important;border:1px solid var(--line)!important;border-radius:16px!important;padding:16px!important;box-shadow:none!important;min-height:auto!important}.card>.meta{font-size:10px!important;color:#8b8b86!important}.card h3{font-size:17px!important;margin:7px 0 4px!important}.rate{color:#d98833!important;font-size:12px}.tag{background:#f4f4f0!important;color:#6f6f6b!important;border-radius:999px!important;font-size:10px!important;padding:4px 8px!important}.card p{font-size:12px;color:#585854}.baby{background:#f3f8f6!important;color:#4b6d63!important;border-radius:10px!important;font-size:11px!important;padding:8px 9px!important}.save{font-size:10px!important;color:#666}.save input{accent-color:var(--accent)}
+.btn{background:var(--ink)!important;color:#fff!important;border-radius:9px!important;font-size:11px!important;padding:8px 10px!important}.btn.alt{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.mapbox{grid-template-columns:320px 1fr!important;gap:12px!important}.maplist,.mapframe{background:#fff!important;border:1px solid var(--line)!important;border-radius:16px!important}.maplist{padding:8px!important}.item{border:0!important;border-radius:10px;padding:10px!important}.item:hover{background:#f6f6f3}
+#prep>.box,.check-section,.prep-summary{background:#fff!important;border:1px solid var(--line)!important;box-shadow:none!important}.check-section{border-radius:16px!important}.prep-summary{border-radius:12px!important}.prep-summary.complete{background:#f3f8f6!important}.check{background:#fafaf8!important;border:1px solid #ecece7!important;border-radius:10px!important;font-size:12px}.check.done{background:#f3f8f6!important;border-color:#dce9e4!important}.check input{accent-color:var(--accent)}.progress i,.mini-progress i{background:var(--accent)!important}
+@media(max-width:760px){.wrap{padding:18px 12px 95px}.topbar{display:block}.topbar h1{font-size:30px}.top-meta{text-align:left;margin-top:14px;white-space:normal}.tabs{position:fixed;top:auto;bottom:calc(10px + env(safe-area-inset-bottom));left:10px;right:10px;max-width:none;margin:0;z-index:50}.section-head{display:block}.section-head p{margin-top:4px}.day-tabs{margin-left:-2px;margin-right:-2px}.day-tab{min-width:105px}.tl-row{grid-template-columns:82px 1fr;gap:10px;padding:13px 12px}.day-title{display:block}.day-title span{display:block;text-align:left;margin-top:3px}.grid{grid-template-columns:1fr!important}.mapbox{grid-template-columns:1fr!important}.mapframe{height:330px!important}.prep-overview{display:flex!important;overflow:auto}.prep-summary{min-width:150px}}
+
 </style></head><body><div class="wrap">
-<header class="hero-v3">
-  <div class="hero-eyebrow">OKINAWA · FAMILY TRIP · 2026</div>
-  <div class="hero-main">
-    <div>
-      <h1>이린이의 첫 오키나와</h1>
-      <div class="hero-sub">첫 바다를 중심으로, 무리하지 않고 잘 쉬는 3박 4일</div>
-    </div>
-    <div class="hero-date"><span>SEPTEMBER</span><strong>22–25</strong><small>2026</small></div>
+
+<header class="topbar">
+  <div>
+    <div class="brand-kicker">OKINAWA · 2026</div>
+    <h1>이린이의 첫 오키나와</h1>
+    <div class="top-sub">첫 바다를 중심으로, 무리하지 않고 잘 쉬는 3박 4일</div>
+    <div class="top-actions"><button class="primary" id="share">현재 상태 공유</button><button id="copy">링크 복사</button><span id="sharemsg" class="meta"></span></div>
   </div>
-  <div class="trip-facts">
-    <div class="trip-fact"><span>FLIGHT</span><strong>RF394 → RF393</strong></div>
-    <div class="trip-fact"><span>STAY 01</span><strong>Hilton Okinawa Sesoko · 2박</strong></div>
-    <div class="trip-fact"><span>STAY 02</span><strong>HOTEL COLLECTIVE · 1박</strong></div>
-    <div class="trip-fact"><span>TRAVELERS</span><strong>엄마 · 아빠 · 14개월 이린이</strong></div>
-  </div>
-  <div class="hero-actions">
-    <button type="button" class="primary" id="share">현재 상태 공유</button>
-    <button type="button" id="copy">링크 복사</button>
-    <span id="sharemsg" class="hero-share-msg" aria-live="polite"></span>
-  </div>
+  <div class="top-meta"><strong>9.22 — 9.25</strong><br>RF394 / RF393<br>Hilton Sesoko 2박 · HOTEL COLLECTIVE 1박</div>
 </header>
-<div class="trip-principle"><span class="dot"></span><div><b>이번 여행의 기준</b><span>이린이의 첫 바다와 낮잠을 최우선으로. 쇼핑·관광·식당은 그 사이에 자연스럽게 넣습니다.</span></div></div>
-<nav class="tabs" aria-label="여행 메뉴">
-  <button class="tab active" data-p="plan"><span class="nav-glyph">◷</span><span>일정</span></button>
-  <button class="tab" data-p="food"><span class="nav-glyph">⌖</span><span>맛집·카페</span></button>
-  <button class="tab" data-p="map"><span class="nav-glyph">★</span><span>내 후보</span></button>
-  <button class="tab" data-p="prep"><span class="nav-glyph">✓</span><span>여행 준비</span></button>
-</nav>
+<div class="principle"><i></i><div><b>여행 기준</b> · 이린이의 첫 바다와 낮잠이 1순위. 쇼핑·관광·식당은 그 사이에 넣기.</div></div>
+<nav class="tabs"><button class="tab active" data-p="plan">일정</button><button class="tab" data-p="food">맛집·카페</button><button class="tab" data-p="map">내 후보</button><button class="tab" data-p="prep">여행 준비</button></nav>
+
+
 
 
 <section id="plan" class="panel active">
-  <div class="plan-head">
-    <h2>전체 일정</h2>
-    <div class="meta">시간은 이린이 컨디션에 따라 유연하게 · 바다와 낮잠을 우선</div>
+  <div class="section-head"><div><h2>일정</h2><p>하루씩 눌러서 보는 간단한 일정표</p></div></div>
+  <div class="day-tabs" role="tablist">
+    <button class="day-tab active" data-day="d1"><small>9/22 화</small><b>도착 · 첫 바다</b></button>
+    <button class="day-tab" data-day="d2"><small>9/23 수</small><b>츄라우미 · 물놀이</b></button>
+    <button class="day-tab" data-day="d3"><small>9/24 목</small><b>세소코 · 나하</b></button>
+    <button class="day-tab" data-day="d4"><small>9/25 금</small><b>공항</b></button>
   </div>
-  <div class="day-strip">
-    <div class="day-chip"><b>9/22 화</b><span>입국 · 라이카무 · 첫 바다</span></div>
-    <div class="day-chip"><b>9/23 수</b><span>츄라우미 · 모토부 · 바다/수영</span></div>
-    <div class="day-chip"><b>9/24 목</b><span>세소코 · 나하 · 렌터카 반납</span></div>
-    <div class="day-chip"><b>9/25 금</b><span>유이레일 · 나하공항</span></div>
-  </div>
+  <div class="it-day active" id="d1"><div class="day-title"><h3>공항 → 라이카무 → Hilton Sesoko</h3><span>도착일 · 첫 바다 확보</span></div><div class="timeline">
+    <div class="tl-row"><div class="tl-time">도착 후</div><div class="tl-main"><b>렌터카 인수</b><p>짐 정리 후 라이카무로 이동.</p></div></div>
+    <div class="tl-row"><div class="tl-time">점심 ~ 13:20</div><div class="tl-main"><b>AEON MALL Okinawa Rycom</b><p>점심 · 이린이 휴식 · 바나나/과일/물 · 몽벨.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">13:30 전후</div><div class="tl-main"><b>라이카무 출발 <span class="tag-mini">늦어도 13:45</span></b><p>세소코 첫 바다 시간을 확보.</p></div></div>
+    <div class="tl-row"><div class="tl-time">15:00경</div><div class="tl-main"><b>Hilton Sesoko 체크인</b><p>수영복 가방은 따로 빼두기.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">15:40 ~ 16:50</div><div class="tl-main"><b>세소코 첫 바다 <span class="tag-mini">최우선</span></b><p>파도·바람·운영상황에 따라 짧게라도 경험하기.</p></div></div>
+    <div class="tl-row"><div class="tl-time">이후</div><div class="tl-main"><b>수영장 → 객실 → 저녁</b><p>피곤하면 호텔 식사로 마무리.</p></div></div>
+  </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Naha+Airport&destination=Hilton+Okinawa+Sesoko+Resort&waypoints=AEON+MALL+Okinawa+Rycom&travelmode=driving">Google 경로 열기 ↗</a></div></div>
 
-  <div class="schedule-day">
-    <div class="schedule-title"><h3>9/22 화 · 공항 → 라이카무 → Hilton Sesoko</h3><div class="route-label">도착일 · 무리하지 않고 첫 바다 확보</div></div>
-    <table class="schedule-table">
-      <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
-      <tbody>
-        <tr><td class="time">도착 후</td><td class="activity">렌터카 인수</td><td class="note">짐 정리 후 바로 북상. 첫날은 관광지 추가 없이 라이카무 경유.</td></tr>
-        <tr><td class="time">점심 ~ 13:20</td><td class="activity">AEON MALL Okinawa Rycom</td><td class="note">점심 · 이린이 휴식 · 바나나/과일/물 · 몽벨. 베이비룸 활용.</td></tr>
-        <tr class="key"><td class="time">13:30 전후</td><td class="activity">라이카무 출발 <span class="mini-badge warn">늦어도 13:45</span></td><td class="note">세소코 첫 바다 시간을 확보하기 위한 기준 시각.</td></tr>
-        <tr><td class="time">15:00경</td><td class="activity">Hilton Okinawa Sesoko 체크인</td><td class="note">수영복 가방은 캐리어와 분리해 바로 꺼낼 수 있게 준비.</td></tr>
-        <tr class="sea"><td class="time">15:40 ~ 16:50</td><td class="activity">세소코 첫 바다 <span class="mini-badge sea">최우선</span></td><td class="note">이린이 첫 바다. 파도·바람·현장 운영상황에 따라 짧게라도 경험하는 것이 목표.</td></tr>
-        <tr><td class="time">이후</td><td class="activity">수영장 → 객실 → 저녁</td><td class="note">피곤하면 호텔 식사. 일정 추가 없이 첫날 회복.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="it-day" id="d2"><div class="day-title"><h3>츄라우미 + 모토부 + 바다</h3><span>관광보다 낮잠과 물놀이 우선</span></div><div class="timeline">
+    <div class="tl-row"><div class="tl-time">07:30 ~ 09:00</div><div class="tl-main"><b>호텔 조식</b><p>이린이 식사와 컨디션 우선.</p></div></div>
+    <div class="tl-row"><div class="tl-time">09:15</div><div class="tl-main"><b>호텔 출발</b><p>츄라우미로 이동.</p></div></div>
+    <div class="tl-row"><div class="tl-time">09:30 ~ 12:00</div><div class="tl-main"><b>츄라우미 수족관</b><p>핵심 위주 2~2.5시간.</p></div></div>
+    <div class="tl-row"><div class="tl-time">12:00 ~ 13:00</div><div class="tl-main"><b>모토부 점심</b><p>저장한 후보 중 현 위치와 대기시간 보고 선택.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">13:30 ~ 15:30</div><div class="tl-main"><b>호텔 낮잠 <span class="tag-mini">보호시간</span></b><p>오후 바다를 위해 낮잠 유지.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">15:30 이후</div><div class="tl-main"><b>세소코 바다 / 수영장</b><p>장거리 추가 관광 없이 여유롭게.</p></div></div>
+  </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Okinawa+Churaumi+Aquarium&travelmode=driving">Google 경로 열기 ↗</a></div></div>
 
-  <div class="schedule-day">
-    <div class="schedule-title"><h3>9/23 수 · 츄라우미 + 모토부 + 바다</h3><div class="route-label">북부 메인데이 · 관광보다 물놀이 우선</div></div>
-    <table class="schedule-table">
-      <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
-      <tbody>
-        <tr><td class="time">07:30 ~ 09:00</td><td class="activity">호텔 조식</td><td class="note">아침을 서두르기보다 이린이 식사와 컨디션 우선.</td></tr>
-        <tr><td class="time">09:15</td><td class="activity">호텔 출발</td><td class="note">츄라우미까지 짧은 이동.</td></tr>
-        <tr><td class="time">09:30 ~ 12:00</td><td class="activity">오키나와 츄라우미 수족관</td><td class="note">2~2.5시간 정도만 핵심 위주. 이린이가 지치면 일찍 종료.</td></tr>
-        <tr><td class="time">12:00 ~ 13:00</td><td class="activity">모토부 점심</td><td class="note">저장한 맛집 후보 중 현 위치·대기시간·아기의자 여부로 선택.</td></tr>
-        <tr class="rest"><td class="time">13:30 ~ 15:30</td><td class="activity">호텔 낮잠 <span class="mini-badge rest">보호시간</span></td><td class="note">오후 바다를 위해 낮잠을 깨지 않는 것을 우선.</td></tr>
-        <tr class="sea"><td class="time">15:30 이후</td><td class="activity">세소코 바다 / 수영장 <span class="mini-badge sea">2차 물놀이</span></td><td class="note">첫날보다 컨디션이 좋으면 여유 있게. 장거리 추가 관광은 생략.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="it-day" id="d3"><div class="day-title"><h3>세소코 → 나하 국제거리</h3><span>가족 먼저 호텔 · 아빠만 렌터카 반납</span></div><div class="timeline">
+    <div class="tl-row"><div class="tl-time">오전</div><div class="tl-main"><b>세소코 여유시간</b><p>전날 바다가 부족했다면 오전 보완.</p></div></div>
+    <div class="tl-row"><div class="tl-time">14:30 ~ 15:00</div><div class="tl-main"><b>HOTEL COLLECTIVE 도착</b><p>아내·이린이·유모차·짐 먼저 하차 후 체크인.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">15:30 전후</div><div class="tl-main"><b>아빠만 렌터카 반납 출발</b><p>주유 영수증 포함 반납 준비.</p></div></div>
+    <div class="tl-row"><div class="tl-time">16:30 목표</div><div class="tl-main"><b>렌터카 반납 완료</b><p>17:00 셔틀 여유 확보.</p></div></div>
+    <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-main"><b>셔틀 → 겐초마에</b><p>하차 후 아빠만 호텔까지 도보 복귀.</p></div></div>
+    <div class="tl-row"><div class="tl-time">저녁</div><div class="tl-main"><b>국제거리 산책 + 저녁</b><p>이린이 컨디션 보고 가까운 저장 후보 선택.</p></div></div>
+  </div><div class="day-route"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Hotel+Collective+Naha&travelmode=driving">Google 경로 열기 ↗</a></div></div>
 
-  <div class="schedule-day">
-    <div class="schedule-title"><h3>9/24 목 · 세소코 → 나하 국제거리</h3><div class="route-label">가족은 호텔 먼저 · 아빠만 렌터카 반납</div></div>
-    <table class="schedule-table">
-      <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
-      <tbody>
-        <tr><td class="time">오전</td><td class="activity">세소코 여유시간 / 체크아웃 준비</td><td class="note">전날 바다를 충분히 못 즐겼다면 오전 보완. 체크아웃 전 짐 정리.</td></tr>
-        <tr><td class="time">14:30 ~ 15:00</td><td class="activity">HOTEL COLLECTIVE 도착</td><td class="note">아내·이린이·유모차·모든 짐 먼저 하차 후 체크인.</td></tr>
-        <tr class="key"><td class="time">15:30 전후</td><td class="activity">아빠만 렌터카 반납 출발 <span class="mini-badge warn">단독 이동</span></td><td class="note">주유 영수증 포함 반납 준비. 가족은 호텔에서 휴식.</td></tr>
-        <tr><td class="time">16:30 목표</td><td class="activity">렌터카 반납 완료</td><td class="note">17:00 셔틀을 놓치지 않도록 여유 확보.</td></tr>
-        <tr><td class="time">17:00</td><td class="activity">Odal 셔틀 → 겐초마에</td><td class="note">겐초마에 하차 후 아빠 혼자 HOTEL COLLECTIVE까지 도보 복귀.</td></tr>
-        <tr><td class="time">저녁</td><td class="activity">국제거리 산책 + 저녁</td><td class="note">이린이 컨디션에 따라 저장 후보 중 가까운 곳 선택. 피곤하면 호텔 식사.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="schedule-day">
-    <div class="schedule-title"><h3>9/25 금 · HOTEL COLLECTIVE → 유이레일 → 나하공항</h3><div class="route-label">08:00 공항 도착 목표</div></div>
-    <table class="schedule-table">
-      <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
-      <tbody>
-        <tr><td class="time">06:30 전후</td><td class="activity">기상 · 최종 짐 점검</td><td class="note">여권·휴대폰·충전기·이린이 물품을 마지막으로 확인.</td></tr>
-        <tr class="key"><td class="time">07:15 ~ 07:20</td><td class="activity">호텔 출발</td><td class="note">유모차와 캐리어 이동 시간을 감안해 여유 있게 출발.</td></tr>
-        <tr><td class="time">07:30 전후</td><td class="activity">겐초마에역</td><td class="note">전날 밤 공식 유이레일 시간표 재확인.</td></tr>
-        <tr><td class="time">07:50 전후</td><td class="activity">나하공항역 도착</td><td class="note">비·짐 문제 발생 시 택시로 즉시 전환.</td></tr>
-        <tr><td class="time">08:00 목표</td><td class="activity">공항 체크인</td><td class="note">RF393 탑승 준비. 아기 식사·기저귀 교환 시간을 따로 확보.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="plan-routes">
-    <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Naha+Airport&destination=Hilton+Okinawa+Sesoko+Resort&waypoints=AEON+MALL+Okinawa+Rycom&travelmode=driving">🗺 9/22 Google 경로</a>
-    <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Okinawa+Churaumi+Aquarium&travelmode=driving">🗺 9/23 Google 경로</a>
-    <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Hotel+Collective+Naha&travelmode=driving">🗺 9/24 Google 경로</a>
-  </div>
+  <div class="it-day" id="d4"><div class="day-title"><h3>HOTEL COLLECTIVE → 나하공항</h3><span>08:00 공항 도착 목표</span></div><div class="timeline">
+    <div class="tl-row"><div class="tl-time">06:30 전후</div><div class="tl-main"><b>기상 · 최종 짐 점검</b><p>여권·휴대폰·충전기·이린이 물품 확인.</p></div></div>
+    <div class="tl-row key"><div class="tl-time">07:15 ~ 07:20</div><div class="tl-main"><b>호텔 출발</b><p>유모차와 캐리어 이동 시간 감안.</p></div></div>
+    <div class="tl-row"><div class="tl-time">07:30 전후</div><div class="tl-main"><b>겐초마에역</b><p>전날 공식 시간표 재확인.</p></div></div>
+    <div class="tl-row"><div class="tl-time">07:50 전후</div><div class="tl-main"><b>나하공항역 도착</b><p>비나 짐 문제면 택시로 전환.</p></div></div>
+    <div class="tl-row"><div class="tl-time">08:00 목표</div><div class="tl-main"><b>공항 체크인</b><p>RF393 탑승 준비.</p></div></div>
+  </div></div>
 </section>
 
 <section id="food" class="panel"><h2>맛집 · 카페 후보</h2><div class="candidate"><strong>⭐ 저장한 후보 <span id="savedN">0</span>곳</strong> · 카드에서 마음에 드는 곳만 체크하세요.</div><div class="filters"><button class="filter active" data-f="all">전체</button><button class="filter" data-f="9/22">9/22 라이카무</button><button class="filter" data-f="9/23">9/23 북부</button><button class="filter" data-f="9/24">9/24 국제거리</button><button class="filter" data-f="카페">카페만</button></div><div id="cards" class="grid"></div></section>
@@ -221,4 +201,5 @@ h3{color:var(--ink);letter-spacing:-.025em}
 {t:"체온계",cat:"health"},{t:"해열제/상비약",cat:"health"},{t:"밴드/소독용품",cat:"health"},{t:"모기기피제",cat:"health"},{t:"손소독제",cat:"health"},
 {t:"휴대폰 충전기",cat:"etc"},{t:"보조배터리",cat:"etc"},{t:"A타입 변환플러그",cat:"etc"},{t:"eSIM/로밍",cat:"etc"},{t:"현금/카드",cat:"etc"},{t:"작은 우산",cat:"etc"},
 {t:"아빠 상의·하의·속옷",cat:"adult"},{t:"엄마 상의·하의·속옷",cat:"adult"},{t:"성인 잠옷/편한 옷",cat:"adult"},{t:"칫솔·치약·면도/세면도구",cat:"adult"},{t:"화장품·클렌징·렌즈/안경",cat:"adult"},{t:"성인 샌들/슬리퍼",cat:"adult"},{t:"모자/선글라스",cat:"adult"},{t:"지갑/운전용 카드·신분증 정리",cat:"adult"}
-],G=[{id:"docs",icon:"📄",name:"서류 · 예약",desc:"출국 전에 가장 먼저 완료"},{id:"adult",icon:"👨‍👩‍👧",name:"성인 짐",desc:"아빠·엄마 개인 준비물"},{id:"babygo",icon:"👶",name:"이린이 · 외출/기저귀",desc:"매일 들고 다닐 아기 짐"},{id:"babyfood",icon:"🥣",name:"이린이 · 식사/간식",desc:"먹는 것과 식사용품"},{id:"water",icon:"🌊",name:"물놀이 · 해변",desc:"첫 바다 핵심 준비"},{id:"health",icon:"🩹",name:"건강 · 위생",desc:"상비약과 위생용품"},{id:"etc",icon:"🔌",name:"전자 · 결제 · 기타",desc:"충전·통신·결제·우천 대비"}];let ff='all',mf='all',cmode='all';const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];function gs(q){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}function gd(q){return'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q)+'&travelmode=driving'}function sk(i){return'oki-p-'+i}function ck(i){return'oki-c-'+i}function saved(i){return localStorage.getItem(sk(i))==='1'}function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function cards(){const box=$('#cards');box.innerHTML='';P.forEach((p,i)=>{if(ff!=='all'&&!((p.a+' '+p.t).includes(ff)))return;let e=document.createElement('article');e.className='card';e.innerHTML='<label class="save"><input type="checkbox" '+(saved(i)?'checked':'')+'> 후보 저장</label><div class="meta">'+esc(p.a)+' · '+esc(p.t)+'</div><h3>'+esc(p.n)+'</h3><span class="rate">★ '+esc(p.r)+'</span> <span class="meta">'+esc(p.v)+'</span><br><span class="tag">'+esc(p.g)+'</span><p>'+esc(p.w)+'</p><div class="baby">👶 '+esc(p.b)+'</div><div class="actions"><a class="btn" target="_blank" href="'+gs(p.q)+'">Google 지도</a><a class="btn alt" target="_blank" href="'+gd(p.q)+'">현재 위치 길찾기</a></div>';e.querySelector('input').onchange=x=>{localStorage.setItem(sk(i),x.target.checked?'1':'0');refresh()};box.appendChild(e)});$('#savedN').textContent=P.filter((_,i)=>saved(i)).length}function maprender(){let a=P.map((p,i)=>[p,i]).filter(([p,i])=>saved(i)&&(mf==='all'||p.a.includes(mf)));let l=$('#maplist');l.innerHTML=a.length?'':'<div class="meta">아직 저장한 후보가 없습니다.</div>';a.forEach(([p,i])=>{let e=document.createElement('div');e.className='item';e.innerHTML='<b>'+esc(p.n)+'</b><div class="meta">'+esc(p.a)+' · '+esc(p.t)+'</div>';e.onclick=()=>$('#mapframe').src='https://www.google.com/maps?q='+encodeURIComponent(p.q)+'&output=embed';l.appendChild(e)});let link=$('#allroute');if(!a.length){link.removeAttribute('href');link.style.opacity=.45}else{link.style.opacity=1;let z=a.slice(0,9),dest=z.at(-1)[0].q,wp=z.slice(0,-1).map(x=>x[0].q).join('|');link.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(dest)+(wp?'&waypoints='+encodeURIComponent(wp):'')+'&travelmode=driving'}}function done(i){return localStorage.getItem(ck(i))==='1'}function groupItems(id){return C.map((c,i)=>[c,i]).filter(([c])=>c.cat===id)}function checks(){let b=$('#checks'),ov=$('#prepOverview');b.innerHTML='';ov.innerHTML='';G.forEach(g=>{let arr=groupItems(g.id),n=arr.filter(([,i])=>done(i)).length,miss=arr.length-n;let s=document.createElement('div');s.className='prep-summary'+(miss===0?' complete':'');s.innerHTML='<b>'+g.icon+' '+g.name+'</b><span>'+(miss===0?'완료 ✅':n+' / '+arr.length+' · 미완료 '+miss+'개')+'</span>';s.onclick=()=>document.getElementById('cg-'+g.id).scrollIntoView({behavior:'smooth'});ov.appendChild(s);let sec=document.createElement('section');sec.className='check-section';sec.id='cg-'+g.id;sec.innerHTML='<div class="check-head"><div><h3>'+g.icon+' '+g.name+'</h3><div class="meta">'+g.desc+'</div></div><div class="check-count '+(miss===0?'all-done':'')+'">'+(miss===0?'완료 ✅':'미완료 '+miss+'개')+'</div></div><div class="mini-progress"><i style="width:'+(100*n/arr.length)+'%"></i></div><div class="checkgrid"></div>';let grid=sec.querySelector('.checkgrid');arr.forEach(([c,i])=>{let isDone=done(i);let e=document.createElement('label');e.className='check'+(isDone?' done':'')+((cmode==='missing'&&isDone)?' hidden-check':'');e.innerHTML='<input type="checkbox" '+(isDone?'checked':'')+'><span>'+esc(c.t)+'</span>';e.querySelector('input').onchange=x=>{localStorage.setItem(ck(i),x.target.checked?'1':'0');checks();progress()};grid.appendChild(e)});if(cmode==='missing'&&miss===0)sec.classList.add('hidden-check');b.appendChild(sec)});progress()}function progress(){let n=C.filter((_,i)=>done(i)).length,miss=C.length-n;$('#progtext').textContent=n+' / '+C.length+' 완료';$('#prog').style.width=(100*n/C.length)+'%';$('#missTotal').textContent=miss?('아직 '+miss+'개 남음'):'모두 준비 완료 ✅'}function refresh(){cards();maprender()}$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.classList.remove('active'));$$('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#'+b.dataset.p).classList.add('active')});$$('[data-f]').forEach(b=>b.onclick=()=>{$$('[data-f]').forEach(x=>x.classList.remove('active'));b.classList.add('active');ff=b.dataset.f;cards()});$$('[data-mf]').forEach(b=>b.onclick=()=>{$$('[data-mf]').forEach(x=>x.classList.remove('active'));b.classList.add('active');mf=b.dataset.mf;maprender()});$$('[data-cmode]').forEach(b=>b.onclick=()=>{$$('[data-cmode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');cmode=b.dataset.cmode;checks()});function shareurl(){let u=new URL(location.href);let a=[];P.forEach((_,i)=>{if(saved(i))a.push('p'+i)});C.forEach((_,i)=>{if(done(i))a.push('c'+i)});u.hash='s='+a.join('.');return u.toString()}async function cp(s){try{await navigator.clipboard.writeText(s);return 1}catch(e){return 0}}$('#copy').onclick=async()=>{$('#sharemsg').textContent=await cp(shareurl())?'링크를 복사했습니다. 카톡에 붙여넣으세요.':'복사가 차단되었습니다.'};$('#share').onclick=async()=>{let u=shareurl();if(navigator.share)try{await navigator.share({title:'오키나와 가족여행',text:'우리 여행 일정과 후보야 🌺',url:u});return}catch(e){}$('#sharemsg').textContent=await cp(u)?'링크를 복사했습니다.':'공유를 사용할 수 없습니다.'};function importState(){if(!location.hash.startsWith('#s='))return;let a=location.hash.slice(3).split('.');a.forEach(x=>{let m=x.match(/^([pc])(\d+)$/);if(!m)return;localStorage.setItem(m[1]==='p'?sk(+m[2]):ck(+m[2]),'1')})}importState();cards();checks();maprender();</script></body></html>
+],G=[{id:"docs",icon:"📄",name:"서류 · 예약",desc:"출국 전에 가장 먼저 완료"},{id:"adult",icon:"👨‍👩‍👧",name:"성인 짐",desc:"아빠·엄마 개인 준비물"},{id:"babygo",icon:"👶",name:"이린이 · 외출/기저귀",desc:"매일 들고 다닐 아기 짐"},{id:"babyfood",icon:"🥣",name:"이린이 · 식사/간식",desc:"먹는 것과 식사용품"},{id:"water",icon:"🌊",name:"물놀이 · 해변",desc:"첫 바다 핵심 준비"},{id:"health",icon:"🩹",name:"건강 · 위생",desc:"상비약과 위생용품"},{id:"etc",icon:"🔌",name:"전자 · 결제 · 기타",desc:"충전·통신·결제·우천 대비"}];let ff='all',mf='all',cmode='all';const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];function gs(q){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}function gd(q){return'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q)+'&travelmode=driving'}function sk(i){return'oki-p-'+i}function ck(i){return'oki-c-'+i}function saved(i){return localStorage.getItem(sk(i))==='1'}function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function cards(){const box=$('#cards');box.innerHTML='';P.forEach((p,i)=>{if(ff!=='all'&&!((p.a+' '+p.t).includes(ff)))return;let e=document.createElement('article');e.className='card';e.innerHTML='<label class="save"><input type="checkbox" '+(saved(i)?'checked':'')+'> 후보 저장</label><div class="meta">'+esc(p.a)+' · '+esc(p.t)+'</div><h3>'+esc(p.n)+'</h3><span class="rate">★ '+esc(p.r)+'</span> <span class="meta">'+esc(p.v)+'</span><br><span class="tag">'+esc(p.g)+'</span><p>'+esc(p.w)+'</p><div class="baby">👶 '+esc(p.b)+'</div><div class="actions"><a class="btn" target="_blank" href="'+gs(p.q)+'">Google 지도</a><a class="btn alt" target="_blank" href="'+gd(p.q)+'">현재 위치 길찾기</a></div>';e.querySelector('input').onchange=x=>{localStorage.setItem(sk(i),x.target.checked?'1':'0');refresh()};box.appendChild(e)});$('#savedN').textContent=P.filter((_,i)=>saved(i)).length}function maprender(){let a=P.map((p,i)=>[p,i]).filter(([p,i])=>saved(i)&&(mf==='all'||p.a.includes(mf)));let l=$('#maplist');l.innerHTML=a.length?'':'<div class="meta">아직 저장한 후보가 없습니다.</div>';a.forEach(([p,i])=>{let e=document.createElement('div');e.className='item';e.innerHTML='<b>'+esc(p.n)+'</b><div class="meta">'+esc(p.a)+' · '+esc(p.t)+'</div>';e.onclick=()=>$('#mapframe').src='https://www.google.com/maps?q='+encodeURIComponent(p.q)+'&output=embed';l.appendChild(e)});let link=$('#allroute');if(!a.length){link.removeAttribute('href');link.style.opacity=.45}else{link.style.opacity=1;let z=a.slice(0,9),dest=z.at(-1)[0].q,wp=z.slice(0,-1).map(x=>x[0].q).join('|');link.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(dest)+(wp?'&waypoints='+encodeURIComponent(wp):'')+'&travelmode=driving'}}function done(i){return localStorage.getItem(ck(i))==='1'}function groupItems(id){return C.map((c,i)=>[c,i]).filter(([c])=>c.cat===id)}function checks(){let b=$('#checks'),ov=$('#prepOverview');b.innerHTML='';ov.innerHTML='';G.forEach(g=>{let arr=groupItems(g.id),n=arr.filter(([,i])=>done(i)).length,miss=arr.length-n;let s=document.createElement('div');s.className='prep-summary'+(miss===0?' complete':'');s.innerHTML='<b>'+g.icon+' '+g.name+'</b><span>'+(miss===0?'완료 ✅':n+' / '+arr.length+' · 미완료 '+miss+'개')+'</span>';s.onclick=()=>document.getElementById('cg-'+g.id).scrollIntoView({behavior:'smooth'});ov.appendChild(s);let sec=document.createElement('section');sec.className='check-section';sec.id='cg-'+g.id;sec.innerHTML='<div class="check-head"><div><h3>'+g.icon+' '+g.name+'</h3><div class="meta">'+g.desc+'</div></div><div class="check-count '+(miss===0?'all-done':'')+'">'+(miss===0?'완료 ✅':'미완료 '+miss+'개')+'</div></div><div class="mini-progress"><i style="width:'+(100*n/arr.length)+'%"></i></div><div class="checkgrid"></div>';let grid=sec.querySelector('.checkgrid');arr.forEach(([c,i])=>{let isDone=done(i);let e=document.createElement('label');e.className='check'+(isDone?' done':'')+((cmode==='missing'&&isDone)?' hidden-check':'');e.innerHTML='<input type="checkbox" '+(isDone?'checked':'')+'><span>'+esc(c.t)+'</span>';e.querySelector('input').onchange=x=>{localStorage.setItem(ck(i),x.target.checked?'1':'0');checks();progress()};grid.appendChild(e)});if(cmode==='missing'&&miss===0)sec.classList.add('hidden-check');b.appendChild(sec)});progress()}function progress(){let n=C.filter((_,i)=>done(i)).length,miss=C.length-n;$('#progtext').textContent=n+' / '+C.length+' 완료';$('#prog').style.width=(100*n/C.length)+'%';$('#missTotal').textContent=miss?('아직 '+miss+'개 남음'):'모두 준비 완료 ✅'}function refresh(){cards();maprender()}$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.classList.remove('active'));$$('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#'+b.dataset.p).classList.add('active')});$$('[data-f]').forEach(b=>b.onclick=()=>{$$('[data-f]').forEach(x=>x.classList.remove('active'));b.classList.add('active');ff=b.dataset.f;cards()});$$('[data-mf]').forEach(b=>b.onclick=()=>{$$('[data-mf]').forEach(x=>x.classList.remove('active'));b.classList.add('active');mf=b.dataset.mf;maprender()});$$('[data-cmode]').forEach(b=>b.onclick=()=>{$$('[data-cmode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');cmode=b.dataset.cmode;checks()});function shareurl(){let u=new URL(location.href);let a=[];P.forEach((_,i)=>{if(saved(i))a.push('p'+i)});C.forEach((_,i)=>{if(done(i))a.push('c'+i)});u.hash='s='+a.join('.');return u.toString()}async function cp(s){try{await navigator.clipboard.writeText(s);return 1}catch(e){return 0}}$('#copy').onclick=async()=>{$('#sharemsg').textContent=await cp(shareurl())?'링크를 복사했습니다. 카톡에 붙여넣으세요.':'복사가 차단되었습니다.'};$('#share').onclick=async()=>{let u=shareurl();if(navigator.share)try{await navigator.share({title:'오키나와 가족여행',text:'우리 여행 일정과 후보야 🌺',url:u});return}catch(e){}$('#sharemsg').textContent=await cp(u)?'링크를 복사했습니다.':'공유를 사용할 수 없습니다.'};function importState(){if(!location.hash.startsWith('#s='))return;let a=location.hash.slice(3).split('.');a.forEach(x=>{let m=x.match(/^([pc])(\d+)$/);if(!m)return;localStorage.setItem(m[1]==='p'?sk(+m[2]):ck(+m[2]),'1')})}importState();cards();checks();maprender();</script><script>(function(){const root=document.getElementById('plan');if(!root)return;root.querySelectorAll('.day-tab').forEach(btn=>btn.addEventListener('click',()=>{root.querySelectorAll('.day-tab').forEach(x=>x.classList.remove('active'));root.querySelectorAll('.it-day').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const el=document.getElementById(btn.dataset.day);if(el)el.classList.add('active')}));})();</script>
+</body></html>
