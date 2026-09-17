@@ -1,0 +1,157 @@
+name: Restore schedule table UI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/restore-schedule-ui.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch schedule UI
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          html = p.read_text(encoding='utf-8')
+
+          css = r'''
+          /* schedule-v2 */
+          .plan-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:20px 0 10px}
+          .plan-head h2{margin:0}.plan-head .meta{max-width:520px;text-align:right}
+          .day-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:16px}
+          .day-chip{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;box-shadow:0 1px 2px #1018280d}
+          .day-chip b{display:block;color:var(--blue);font-size:15px;margin-bottom:3px}.day-chip span{font-size:13px;color:#344054}
+          .schedule-day{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:12px 0;box-shadow:0 1px 2px #1018280d}
+          .schedule-title{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;background:linear-gradient(90deg,#eef5ff,#f8fbff);border-bottom:1px solid var(--line)}
+          .schedule-title h3{margin:0;color:#123b64}.schedule-title .route-label{font-size:12px;font-weight:800;color:#667085;text-align:right}
+          .schedule-table{width:100%;border-collapse:collapse;table-layout:fixed}
+          .schedule-table th{background:#123b64;color:#fff;text-align:left;padding:9px 12px;font-size:12px;letter-spacing:.01em}
+          .schedule-table td{padding:11px 12px;border-top:1px solid #edf0f4;vertical-align:top;font-size:14px}
+          .schedule-table tbody tr:first-child td{border-top:0}
+          .schedule-table .time{width:118px;white-space:nowrap;font-weight:850;color:#1769d3}
+          .schedule-table .activity{width:245px;font-weight:800;color:#172554}
+          .schedule-table .note{color:#475467}
+          .schedule-table tr.key td{background:#fff8eb}.schedule-table tr.sea td{background:#ecfeff}.schedule-table tr.rest td{background:#f7f5ff}
+          .mini-badge{display:inline-block;margin-left:5px;border-radius:999px;padding:2px 7px;font-size:11px;font-weight:850;background:#e8f1ff;color:#155eef;vertical-align:1px}
+          .mini-badge.sea{background:#cffafe;color:#0e7490}.mini-badge.rest{background:#ede9fe;color:#6d28d9}.mini-badge.warn{background:#ffedd5;color:#c2410c}
+          .plan-routes{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}.plan-routes .btn{padding:8px 11px}
+          @media(max-width:760px){
+            .plan-head{align-items:flex-start;flex-direction:column}.plan-head .meta{text-align:left}
+            .day-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+            .schedule-title{align-items:flex-start;flex-direction:column}.schedule-title .route-label{text-align:left}
+            .schedule-table thead{display:none}.schedule-table,.schedule-table tbody,.schedule-table tr,.schedule-table td{display:block;width:100%}
+            .schedule-table tr{padding:9px 12px;border-top:1px solid #edf0f4}.schedule-table tbody tr:first-child{border-top:0}
+            .schedule-table td{border:0;padding:3px 0}.schedule-table .time,.schedule-table .activity{width:100%;white-space:normal}
+            .schedule-table .time:before{content:'시간 · ';color:#667085;font-weight:700}.schedule-table .note{margin-top:3px;font-size:13px}
+          }
+          '''
+
+          if '/* schedule-v2 */' not in html:
+              html = html.replace('</style>', css + '\n</style>', 1)
+
+          plan = r'''
+          <section id="plan" class="panel active">
+            <div class="plan-head">
+              <h2>전체 일정</h2>
+              <div class="meta">시간은 이린이 컨디션에 따라 유연하게 · 바다와 낮잠을 우선</div>
+            </div>
+            <div class="day-strip">
+              <div class="day-chip"><b>9/22 화</b><span>입국 · 라이카무 · 첫 바다</span></div>
+              <div class="day-chip"><b>9/23 수</b><span>츄라우미 · 모토부 · 바다/수영</span></div>
+              <div class="day-chip"><b>9/24 목</b><span>세소코 · 나하 · 렌터카 반납</span></div>
+              <div class="day-chip"><b>9/25 금</b><span>유이레일 · 나하공항</span></div>
+            </div>
+
+            <div class="schedule-day">
+              <div class="schedule-title"><h3>9/22 화 · 공항 → 라이카무 → Hilton Sesoko</h3><div class="route-label">도착일 · 무리하지 않고 첫 바다 확보</div></div>
+              <table class="schedule-table">
+                <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
+                <tbody>
+                  <tr><td class="time">도착 후</td><td class="activity">렌터카 인수</td><td class="note">짐 정리 후 바로 북상. 첫날은 관광지 추가 없이 라이카무 경유.</td></tr>
+                  <tr><td class="time">점심 ~ 13:20</td><td class="activity">AEON MALL Okinawa Rycom</td><td class="note">점심 · 이린이 휴식 · 바나나/과일/물 · 몽벨. 베이비룸 활용.</td></tr>
+                  <tr class="key"><td class="time">13:30 전후</td><td class="activity">라이카무 출발 <span class="mini-badge warn">늦어도 13:45</span></td><td class="note">세소코 첫 바다 시간을 확보하기 위한 기준 시각.</td></tr>
+                  <tr><td class="time">15:00경</td><td class="activity">Hilton Okinawa Sesoko 체크인</td><td class="note">수영복 가방은 캐리어와 분리해 바로 꺼낼 수 있게 준비.</td></tr>
+                  <tr class="sea"><td class="time">15:40 ~ 16:50</td><td class="activity">세소코 첫 바다 <span class="mini-badge sea">최우선</span></td><td class="note">이린이 첫 바다. 파도·바람·현장 운영상황에 따라 짧게라도 경험하는 것이 목표.</td></tr>
+                  <tr><td class="time">이후</td><td class="activity">수영장 → 객실 → 저녁</td><td class="note">피곤하면 호텔 식사. 일정 추가 없이 첫날 회복.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="schedule-day">
+              <div class="schedule-title"><h3>9/23 수 · 츄라우미 + 모토부 + 바다</h3><div class="route-label">북부 메인데이 · 관광보다 물놀이 우선</div></div>
+              <table class="schedule-table">
+                <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
+                <tbody>
+                  <tr><td class="time">07:30 ~ 09:00</td><td class="activity">호텔 조식</td><td class="note">아침을 서두르기보다 이린이 식사와 컨디션 우선.</td></tr>
+                  <tr><td class="time">09:15</td><td class="activity">호텔 출발</td><td class="note">츄라우미까지 짧은 이동.</td></tr>
+                  <tr><td class="time">09:30 ~ 12:00</td><td class="activity">오키나와 츄라우미 수족관</td><td class="note">2~2.5시간 정도만 핵심 위주. 이린이가 지치면 일찍 종료.</td></tr>
+                  <tr><td class="time">12:00 ~ 13:00</td><td class="activity">모토부 점심</td><td class="note">저장한 맛집 후보 중 현 위치·대기시간·아기의자 여부로 선택.</td></tr>
+                  <tr class="rest"><td class="time">13:30 ~ 15:30</td><td class="activity">호텔 낮잠 <span class="mini-badge rest">보호시간</span></td><td class="note">오후 바다를 위해 낮잠을 깨지 않는 것을 우선.</td></tr>
+                  <tr class="sea"><td class="time">15:30 이후</td><td class="activity">세소코 바다 / 수영장 <span class="mini-badge sea">2차 물놀이</span></td><td class="note">첫날보다 컨디션이 좋으면 여유 있게. 장거리 추가 관광은 생략.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="schedule-day">
+              <div class="schedule-title"><h3>9/24 목 · 세소코 → 나하 국제거리</h3><div class="route-label">가족은 호텔 먼저 · 아빠만 렌터카 반납</div></div>
+              <table class="schedule-table">
+                <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
+                <tbody>
+                  <tr><td class="time">오전</td><td class="activity">세소코 여유시간 / 체크아웃 준비</td><td class="note">전날 바다를 충분히 못 즐겼다면 오전 보완. 체크아웃 전 짐 정리.</td></tr>
+                  <tr><td class="time">14:30 ~ 15:00</td><td class="activity">HOTEL COLLECTIVE 도착</td><td class="note">아내·이린이·유모차·모든 짐 먼저 하차 후 체크인.</td></tr>
+                  <tr class="key"><td class="time">15:30 전후</td><td class="activity">아빠만 렌터카 반납 출발 <span class="mini-badge warn">단독 이동</span></td><td class="note">주유 영수증 포함 반납 준비. 가족은 호텔에서 휴식.</td></tr>
+                  <tr><td class="time">16:30 목표</td><td class="activity">렌터카 반납 완료</td><td class="note">17:00 셔틀을 놓치지 않도록 여유 확보.</td></tr>
+                  <tr><td class="time">17:00</td><td class="activity">Odal 셔틀 → 겐초마에</td><td class="note">겐초마에 하차 후 아빠 혼자 HOTEL COLLECTIVE까지 도보 복귀.</td></tr>
+                  <tr><td class="time">저녁</td><td class="activity">국제거리 산책 + 저녁</td><td class="note">이린이 컨디션에 따라 저장 후보 중 가까운 곳 선택. 피곤하면 호텔 식사.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="schedule-day">
+              <div class="schedule-title"><h3>9/25 금 · HOTEL COLLECTIVE → 유이레일 → 나하공항</h3><div class="route-label">08:00 공항 도착 목표</div></div>
+              <table class="schedule-table">
+                <thead><tr><th>시간</th><th>일정</th><th>포인트</th></tr></thead>
+                <tbody>
+                  <tr><td class="time">06:30 전후</td><td class="activity">기상 · 최종 짐 점검</td><td class="note">여권·휴대폰·충전기·이린이 물품을 마지막으로 확인.</td></tr>
+                  <tr class="key"><td class="time">07:15 ~ 07:20</td><td class="activity">호텔 출발</td><td class="note">유모차와 캐리어 이동 시간을 감안해 여유 있게 출발.</td></tr>
+                  <tr><td class="time">07:30 전후</td><td class="activity">겐초마에역</td><td class="note">전날 밤 공식 유이레일 시간표 재확인.</td></tr>
+                  <tr><td class="time">07:50 전후</td><td class="activity">나하공항역 도착</td><td class="note">비·짐 문제 발생 시 택시로 즉시 전환.</td></tr>
+                  <tr><td class="time">08:00 목표</td><td class="activity">공항 체크인</td><td class="note">RF393 탑승 준비. 아기 식사·기저귀 교환 시간을 따로 확보.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="plan-routes">
+              <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Naha+Airport&destination=Hilton+Okinawa+Sesoko+Resort&waypoints=AEON+MALL+Okinawa+Rycom&travelmode=driving">🗺 9/22 Google 경로</a>
+              <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Okinawa+Churaumi+Aquarium&travelmode=driving">🗺 9/23 Google 경로</a>
+              <a class="btn alt" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hilton+Okinawa+Sesoko+Resort&destination=Hotel+Collective+Naha&travelmode=driving">🗺 9/24 Google 경로</a>
+            </div>
+          </section>
+          '''
+
+          pattern = r'<section id="plan" class="panel active">.*?</section>\s*<section id="food"'
+          repl = plan + '\n<section id="food"'
+          new_html, n = re.subn(pattern, repl, html, count=1, flags=re.S)
+          if n != 1:
+              raise SystemExit(f'plan section replacement count={n}')
+
+          p.write_text(new_html, encoding='utf-8')
+          PY
+      - name: Commit patched page
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore table-style trip schedule UI"
+          git push
