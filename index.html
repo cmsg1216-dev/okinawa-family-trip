@@ -134,6 +134,14 @@ h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
 .food-filter-wrap{margin:12px 0 18px}.food-filter-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:7px 0}.food-filter-label{font-size:10px;font-weight:800;color:#999;min-width:38px}.food-filter-row button{border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:750;cursor:pointer}.food-filter-row button.active{background:var(--ink);border-color:var(--ink);color:#fff}.food-meta-tags,.source-tags{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0}.genre-pill,.style-pill,.source-pill{display:inline-flex;align-items:center;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:800;line-height:1.3;text-decoration:none}.genre-pill{background:#f1f1ed;color:#555}.style-pill{background:#fff0ec;color:#b15140}.source-pill{background:#f7f7f4;color:#555;border:1px solid #e7e7e2}.source-pill.tabelog{background:#fff7e7;color:#8b5a08;border-color:#f1dfb7}.source-pill.savor{background:#f0f6ff;color:#315b92;border-color:#d9e6f8}.source-pill.tc{background:#eff8f5;color:#2f6e5c;border-color:#d5e8e1}.source-pill.warn{background:#fff0ed;color:#b64d3d;border-color:#f3d4ce}.filter-note{font-size:10px;color:#92928c;margin-top:4px}.food-count-note{font-size:10px;color:#999;margin-left:4px}.cafe-card{position:relative}.cafe-card:after{content:'CAFE';position:absolute;right:14px;bottom:14px;font-size:8px;font-weight:900;letter-spacing:.12em;color:#c6c0b9}.new-mark{color:#b15140;font-size:9px;font-weight:850;margin-left:5px}.rank-line{font-size:10px;color:#7b6a45;margin:1px 0 6px}.status-warn{font-size:10px;color:#b64d3d;font-weight:750;margin:2px 0 6px}
 @media(max-width:760px){.food-filter-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}.food-filter-row::-webkit-scrollbar{display:none}.food-filter-label{position:sticky;left:0;background:var(--bg);z-index:2;padding-right:3px}.food-filter-row button{white-space:nowrap}.cafe-card:after{display:none}}
 
+
+/* latte-curation-v3 */
+.latte-guide{margin:14px 0 18px}.latte-guide-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:8px}.latte-guide-title b{font-size:13px}.latte-guide-title span{font-size:10px;color:var(--sub)}
+.latte-picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.latte-pick{background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 12px}.latte-pick small{display:block;font-size:9px;color:#a15c4e;font-weight:850;margin-bottom:3px}.latte-pick b{display:block;font-size:12px}.latte-pick span{display:block;color:var(--sub);font-size:10px;margin-top:3px;line-height:1.45}
+.latte-badges{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0}.latte-pill{display:inline-flex;align-items:center;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:850;background:#f4eee9;color:#72564d}.latte-pill.pick{background:#fff0ec;color:#b04d3d}.latte-pill.evA{background:#edf7f3;color:#2e6d5c}.latte-pill.evB{background:#f4f1fa;color:#675587}.latte-pill.evC{background:#f4f4f1;color:#777}
+.latte-note{font-size:10px;color:#5f5f5b;line-height:1.45;padding:7px 8px;background:#faf8f5;border-radius:9px;margin:5px 0 8px}.source-pill.official{background:#f3f7ff;color:#416080;border-color:#dae5f5}.source-pill.blog{background:#fff6ef;color:#9a5d36;border-color:#f1decf}.source-pill.review{background:#f6f3fb;color:#675587;border-color:#e5dff1}
+@media(max-width:760px){.latte-picks{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:3px}.latte-picks::-webkit-scrollbar{display:none}.latte-pick{min-width:205px}.latte-guide-title{align-items:flex-start;flex-direction:column;gap:2px}}
+
 </style></head><body><div class="wrap">
 
 <header class="topbar">
@@ -324,6 +332,81 @@ h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
   food.querySelectorAll('[data-area]').forEach(b=>b.addEventListener('click',()=>{food.querySelectorAll('[data-area]').forEach(x=>x.classList.remove('active'));b.classList.add('active');area=b.dataset.area;cards()}));
   food.querySelectorAll('[data-genre]').forEach(b=>b.addEventListener('click',()=>{food.querySelectorAll('[data-genre]').forEach(x=>x.classList.remove('active'));b.classList.add('active');genre=b.dataset.genre;cards()}));
   cards();maprender();
+})();
+</script>
+
+
+<script>
+(function(){
+  if(window.__latteCurationV3 || typeof P==='undefined') return;
+  window.__latteCurationV3=true;
+
+  const latteMeta={
+    'T&M Coffee':{a:'9/24 나하',genre:'스페셜티 커피',style:'미니멀·커피 중심',latte:'클래식 라떼 최우선',latteGroup:'클래식',latteEvidence:'A',lattePick:'와이프 PICK 1',latteNote:'공식 메뉴에 Hot/Iced 카페라떼. 스페셜티 에스프레소를 라떼에 적합하다고 직접 안내. 클래식한 핫 라떼부터 마셔볼 후보.',official:'https://www.tmcoffee.jp/2',blog:'https://uco-trip.com/tm_coffee/',status:'9/24 목요일 공식 08:00~18:00'},
+    'rokkan COFFEE CREATORS':{a:'9/24 나하',genre:'스페셜티 커피',style:'인더스트리얼·로스터리',latte:'진한 에스프레소 라떼',latteGroup:'진한 라떼',latteEvidence:'A',lattePick:'커피맛 우선',latteNote:'공식적으로 원두별 로스팅 프로파일을 강조. Tabelog 후기에서 에스프레소가 진하고 농후한 라떼, 깊게 볶은 에스프레소와 크리미한 밀크 조합 평가가 반복됨.',official:'https://www.rokkancoffee.com/',tabelog:'https://tabelog.com/okinawa/A4701/A470101/47025742/',review:'https://tabelog.com/okinawa/A4701/A470101/47025742/dtlrvwlst/'},
+    'Sinmay Coffee':{a:'9/23 나키진',genre:'생흑당 라떼',style:'오키나와 로컬·포토제닉',latte:'생흑당 라떼',latteGroup:'흑당',latteEvidence:'A',lattePick:'오키나와 특색 1',latteNote:'주문 후 생흑당을 라떼 위에 직접 갈아 올리는 방식. 2026년 Tabelog 후기에서 달지만 과하지 않고 라떼와 흑당 조합이 좋다는 반응이 반복됨.',tabelog:'https://tabelog.com/okinawa/A4702/A470202/47028936/',review:'https://tabelog.com/okinawa/A4702/A470202/47028936/dtlrvwlst/?type=0',status:'나키진 우회 동선이 생길 때 보너스 후보'},
+    'Cafe ACCRO':{a:'9/24 국제거리',genre:'카페·디저트',style:'레트로·넓은 실내',latte:'밀크감 라떼',latteGroup:'밀크감',latteEvidence:'B',lattePick:'부드러운 라떼',latteNote:'현지 카페 블로그에서 아이스 카페라떼를 직접 마시고 “밀크감이 충분하고 부드러운 타입”으로 평가. 흑당라떼와 디저트도 있음.',tabelog:'https://tabelog.com/okinawa/A4701/A470101/47028928/',blog:'https://okinawa-life30.com/cafe-accro/',status:'HOTEL COLLECTIVE 맞은편 · 부정기 휴무 확인'},
+    'OKINAWA CAFE Blue shell':{a:'9/24 겐초마에',genre:'생흑당·디저트',style:'블루·우드·포토제닉',latte:'생흑당 라떼',latteGroup:'흑당',latteEvidence:'B',lattePick:'공간+오키나와',latteNote:'공식 사이트가 생흑당과 블루·화이트·우드 인테리어를 핵심으로 소개. 라떼 원정집보다는 오키나와 특색 음료와 공간 경험용.',official:'https://blueshell.jp/',status:'11:00~21:00 · 겐초마에/국제거리 동선 좋음'},
+    'LESTEL NAHA BREAKFAST & CAFE':{a:'9/24 마키시',genre:'스페셜티 커피',style:'그린·로컬',latte:'클래식 라떼 숨은 후보',latteGroup:'클래식',latteEvidence:'B',lattePick:'숨은 라떼',latteNote:'Tabelog 후기에서 커피 향과 부드러운 우유가 각각 살아 있는 깔끔한 카페라떼라는 평가. 공식 사이트는 오키나와 각지의 스페셜티 커피 제공을 안내.',official:'https://lestel.jp/cafe/',tabelog:'https://tabelog.com/kr/okinawa/A4701/A470101/47034011/',status:'9/24 목요일 07:00~23:00 표기'},
+    'Cafune':{a:'9/24 국제거리·미에바시',genre:'카페·디저트',style:'뉴트럴·감성',latte:'라떼+디저트',latteGroup:'공간디자인',latteEvidence:'B',lattePick:'공간+디저트',latteNote:'라떼 단독 원정 목적보다는 디자인 좋은 실내와 디저트를 함께 즐기는 후보. 국제거리와 미에바시 사이 파라다이스도리 쪽.',tabelog:'https://tabelog.com/okinawa/A4701/A470101/47025119/',status:'9/24 목요일 10:00~18:00 표기'},
+    'One Eighty South':{a:'9/23 나키진',genre:'브런치·커피',style:'미니멀·리조트',latte:'라떼/오트밀크 메뉴',latteGroup:'공간디자인',latteEvidence:'C',lattePick:'공간 우선',latteNote:'라떼 및 오트밀크 계열 메뉴는 확인되지만 라떼 맛 자체의 후기 근거는 상대적으로 약함. 공간·브런치·커피 종합 후보.',tabelog:'https://tabelog.com/okinawa/A4702/A470202/47033013/',status:'9/23 수요일 09:00~14:00 표기 · 부정기 휴무 확인'},
+    'MOKULELE':{latte:'뷰 우선 · 라떼 2순위',latteGroup:'오션뷰',latteEvidence:'C',lattePick:'뷰 우선',latteNote:'오션뷰와 브런치 분위기가 핵심. 카페 자체 매력은 높지만 이번 목적이 “인생라떼”라면 T&M/rokkan/Sinmay보다 우선순위 낮게 보기.'}
+  };
+
+  const additions=[
+    {a:'9/24 나하',t:'카페',q:'T&M Coffee Makishi Naha Okinawa',n:'T&M Coffee',r:'—',v:'공식+현지후기',g:'☕ 클래식 라떼 1순위',w:'스페셜티 에스프레소와 스팀밀크 밸런스를 보러 가는 라떼 원정 후보. 와이프가 라떼를 진심으로 좋아한다면 첫 잔은 핫 카페라떼로.',b:'마키시 · 유모차/아기의자 여부는 방문 전 확인'},
+    {a:'9/24 나하',t:'카페',q:'rokkan COFFEE CREATORS Naha Okinawa',n:'rokkan COFFEE CREATORS',r:'—',v:'Tabelog 81+',g:'☕ 진한 커피맛',w:'에스프레소 존재감이 강한 농후한 라떼를 좋아할 때. 커피 자체를 진하게 느끼는 타입의 후보.',b:'牧志역 약 1.1km · 주차 없음 · 예약 불가'},
+    {a:'9/23 나키진',t:'카페',q:'Sinmay Coffee Nakijin Okinawa',n:'Sinmay Coffee',r:'3.32',v:'Tabelog 약 49',g:'🌰 생흑당 라떼',w:'생흑당을 눈앞에서 갈아 라떼 위에 올리는 오키나와 특색 후보. 맛과 사진 경험을 함께 노릴 때.',b:'주차 있음 · 예약 불가 · 동선 우회 필요'},
+    {a:'9/24 국제거리',t:'카페',q:'Cafe ACCRO Naha Okinawa',n:'Cafe ACCRO',r:'—',v:'Tabelog+현지블로그',g:'🥛 밀크감 라떼',w:'부드럽고 우유감이 많은 라떼 취향이라면 좋은 후보. HOTEL COLLECTIVE 바로 맞은편이라 부담 없이 들르기 좋음.',b:'2층 · 넓은 실내 · 전용주차 없음 · 부정기휴무'},
+    {a:'9/24 겐초마에',t:'카페',q:'OKINAWA CAFE Blue shell Naha',n:'OKINAWA CAFE Blue shell',r:'—',v:'공식',g:'🌊 공간+생흑당',w:'블루·화이트·우드톤 공간과 생흑당 음료가 포인트. 라떼 기술보다는 오키나와 여행 분위기와 사진까지 같이 보는 후보.',b:'11:00~21:00 · 국제거리/겐초마에'},
+    {a:'9/24 마키시',t:'카페',q:'LESTEL NAHA BREAKFAST & CAFE',n:'LESTEL NAHA BREAKFAST & CAFE',r:'—',v:'Tabelog+공식',g:'☕ 숨은 라떼',w:'시장권에서 쉬면서 제대로 만든 카페라떼를 마시고 싶을 때. 후기에서 커피와 부드러운 우유가 각각 살아 있다는 평가.',b:'07:00부터 · 카페타임 스페셜티 커피'},
+    {a:'9/24 국제거리·미에바시',t:'카페',q:'Cafune Naha Okinawa Makishi',n:'Cafune',r:'—',v:'Tabelog 22+',g:'🎨 공간+디저트',w:'라떼 맛 단독 승부보다는 차분한 공간, 디저트와 함께 쉬어가는 감성 후보.',b:'미에바시 도보권 · 목 10:00~18:00 표기'},
+    {a:'9/23 나키진',t:'카페',q:'One Eighty South Nakijin Okinawa',n:'One Eighty South',r:'—',v:'Tabelog+지도',g:'◻ 브런치+디자인',w:'깔끔한 공간과 브런치, 라떼/오트밀크 계열을 함께 보는 후보. 라떼 원정 우선순위보다는 공간 종합점수.',b:'9/23 수 09:00~14:00 표기 · 부정기휴무 확인'}
+  ];
+  const existing=new Set(P.map(x=>x.n));additions.forEach(x=>{if(!existing.has(x.n))P.push(x)});
+  P.forEach(p=>{if(latteMeta[p.n])Object.assign(p,latteMeta[p.n])});
+
+  const food=document.getElementById('food'); if(!food)return;
+  if(!food.querySelector('.latte-guide')){
+    const guide=document.createElement('div'); guide.className='latte-guide';
+    guide.innerHTML=`<div class="latte-guide-title"><b>☕ 라떼 취향 빠른 선택</b><span>“인생라떼”는 보장 대신 근거 수준을 표시</span></div><div class="latte-picks"><div class="latte-pick"><small>CLASSIC LATTE</small><b>T&M Coffee</b><span>스페셜티 에스프레소 + 스팀밀크. 와이프 첫 선택.</span></div><div class="latte-pick"><small>STRONG ESPRESSO</small><b>rokkan COFFEE</b><span>커피맛이 진하고 농후한 라떼 취향.</span></div><div class="latte-pick"><small>OKINAWA SPECIAL</small><b>Sinmay Coffee</b><span>생흑당을 직접 갈아 올리는 오키나와 특색 라떼.</span></div><div class="latte-pick"><small>MILKY & EASY</small><b>Cafe ACCRO</b><span>부드럽고 우유감 많은 타입 + 호텔 바로 맞은편.</span></div></div>`;
+    const anchor=food.querySelector('.candidate'); if(anchor)anchor.after(guide); else food.prepend(guide);
+  }
+  const fw=food.querySelector('.food-filter-wrap');
+  if(fw && !fw.querySelector('[data-latte]')){
+    const row=document.createElement('div');row.className='food-filter-row';row.innerHTML='<span class="food-filter-label">라떼</span><button class="active" data-latte="all">전체</button><button data-latte="클래식">클래식</button><button data-latte="진한 라떼">진한 커피맛</button><button data-latte="밀크감">밀크감</button><button data-latte="흑당">생흑당</button><button data-latte="공간디자인">공간디자인</button><button data-latte="오션뷰">뷰 우선</button><button data-latte="verified">후기 확인 A/B</button>';
+    const note=fw.querySelector('.filter-note'); if(note)fw.insertBefore(row,note); else fw.appendChild(row);
+    row.querySelectorAll('[data-latte]').forEach(b=>b.addEventListener('click',()=>{row.querySelectorAll('[data-latte]').forEach(x=>x.classList.remove('active'));b.classList.add('active');cards()}));
+  }
+
+  window.cards=function(){
+    const box=document.getElementById('cards');box.innerHTML='';let visible=0;
+    const area=food.querySelector('[data-area].active')?.dataset.area||'all';
+    const genre=food.querySelector('[data-genre].active')?.dataset.genre||'all';
+    const latte=food.querySelector('[data-latte].active')?.dataset.latte||'all';
+    P.forEach((p,i)=>{
+      const areaOk=area==='all'||p.a.includes(area);
+      const hay=[p.t,p.genre||'',p.style||'',p.n].join(' ');
+      const genreOk=genre==='all'||hay.includes(genre);
+      const latteOk=latte==='all'||(latte==='verified'?['A','B'].includes(p.latteEvidence):String(p.latteGroup||'').includes(latte));
+      if(!areaOk||!genreOk||!latteOk)return;visible++;
+      const e=document.createElement('article');e.className='card '+(p.t==='카페'?'cafe-card':'');
+      let src='';
+      if(p.tabelog)src+=`<a class="source-pill tabelog" target="_blank" href="${p.tabelog}">食べログ${p.score?' '+p.score:''}${p.reviews?' · '+p.reviews+'건':''}</a>`;
+      if(p.savor)src+=`<a class="source-pill savor" target="_blank" href="${p.savor}">SAVOR JAPAN</a>`;
+      if(p.tc)src+=`<a class="source-pill tc" target="_blank" href="${p.tc}">TableCheck 예약</a>`;
+      if(p.official)src+=`<a class="source-pill official" target="_blank" href="${p.official}">공식</a>`;
+      if(p.blog)src+=`<a class="source-pill blog" target="_blank" href="${p.blog}">현지 블로그</a>`;
+      if(p.review)src+=`<a class="source-pill review" target="_blank" href="${p.review}">라떼 후기</a>`;
+      let latteBlock='';
+      if(p.latte){const ev=p.latteEvidence||'C';latteBlock=`<div class="latte-badges"><span class="latte-pill pick">☕ ${esc(p.latte)}</span>${p.lattePick?`<span class="latte-pill">${esc(p.lattePick)}</span>`:''}<span class="latte-pill ev${ev}">근거 ${ev}</span></div>${p.latteNote?`<div class="latte-note">${esc(p.latteNote)}</div>`:''}`;}
+      e.innerHTML='<label class="save"><input type="checkbox" '+(saved(i)?'checked':'')+'> 후보 저장</label><div class="meta">'+esc(p.a)+' · '+esc(p.t)+'</div><h3>'+esc(p.n)+'</h3><div class="food-meta-tags"><span class="genre-pill">'+esc(p.genre||p.t)+'</span><span class="style-pill">'+esc(p.style||'')+'</span></div>'+latteBlock+(p.rank?'<div class="rank-line">🏅 Tabelog '+esc(p.rank)+'</div>':'')+(p.status?'<div class="status-warn">⚠ '+esc(p.status)+'</div>':'')+'<div class="source-tags">'+src+'</div><span class="rate">★ '+esc(p.r)+'</span> <span class="meta">'+esc(p.v)+'</span><br><span class="tag">'+esc(p.g)+'</span><p>'+esc(p.w)+'</p><div class="baby">👶 '+esc(p.b)+'</div><div class="actions"><a class="btn" target="_blank" href="'+gs(p.q)+'">Google 지도</a><a class="btn alt" target="_blank" href="'+gd(p.q)+'">현재 위치 길찾기</a></div>';
+      e.querySelector('input').onchange=x=>{localStorage.setItem(sk(i),x.target.checked?'1':'0');refresh()};box.appendChild(e);
+    });
+    document.getElementById('savedN').textContent=P.filter((_,i)=>saved(i)).length;
+    let n=food.querySelector('.food-count-note');if(!n){n=document.createElement('span');n.className='food-count-note';document.getElementById('savedN').parentElement.appendChild(n)}n.textContent=' · 현재 '+visible+'곳 표시';
+  };
+  cards(); maprender();
 })();
 </script>
 
