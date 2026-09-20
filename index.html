@@ -166,6 +166,10 @@ h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
 .change-share-btn{background:#ff735c!important;color:#fff!important;border-color:#ff735c!important}
 .change-share-hint{font-size:10px;color:#8c8c87;margin-top:6px}
 
+
+/* checklist-sync-v1 */
+.sync-origin-btn{background:#fff!important;color:#2f6e5c!important;border:1px solid #cfe2db!important}
+
 </style></head><body><div class="wrap">
 
 <header class="topbar">
@@ -519,6 +523,51 @@ h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
 </script>
 
 
+
+<script>
+(function(){
+  if(window.__sharedChecklist20260920 || typeof C==='undefined') return;
+  window.__sharedChecklist20260920=true;
+
+  const renameMap={
+    '휴대용 아기간식':'아기간식(떡뻥, 고구마스틱 등)',
+    '음식가위':'음식 가위&집게 세트',
+    '이유식':'실온 이유식(육류10개&해산물6개)',
+    '이유식 숟가락 3세트':'이유식 숟가락&포크 3세트',
+    '세척솔':'세척솔(수세미)',
+    '병원약':'병원약(오메가6)'
+  };
+  C.forEach(c=>{if(renameMap[c.t])c.t=renameMap[c.t]});
+
+  const deleted=new Set([
+    '바나나','천때기','이유식 수저가위','가위','손도리','구스카','아기띠',
+    '장난감 2개','치발기 1개 + 줄','잠옷','메리제인','아기 숟가락/포크','집게','이린이 모자'
+  ]);
+  for(let i=C.length-1;i>=0;i--){if(deleted.has(C[i].t))C.splice(i,1)}
+
+  const additions=[
+    {t:'휴대용 돗자리',cat:'babyplay'},
+    {t:'비행기 간식, 물, 우유',cat:'babyeat'},
+    {t:'신발',cat:'babywear'},
+    {t:'기내 장난감',cat:'babyplay'},
+    {t:'튜브',cat:'babyplay'},
+    {t:'빨래 걸이',cat:'adult'},
+    {t:'휴대용 무게 측정기',cat:'adult'},
+    {t:'동전 지갑',cat:'adult'},
+    {t:'장바구니',cat:'adult'},
+    {t:'일회용 수저',cat:'adult'},
+    {t:'실리콘 케이스(중탕용)',cat:'babyeat'},
+    {t:'슬기 귀마개',cat:'adult'},
+    {t:'창민 약(필수!)',cat:'adult'},
+    {t:'비타민 아로나민 등 영양제',cat:'adult'}
+  ];
+  additions.forEach(x=>{if(!C.some(c=>c.t===x.t))C.push({t:x.t,cat:x.cat,shared:true})});
+
+  if(typeof checks==='function')checks();
+  if(typeof progress==='function')progress();
+})();
+</script>
+
 <script>
 (function(){
   if(window.__checklistManageV1 || typeof C==='undefined') return;
@@ -760,6 +809,32 @@ h2{font-size:24px;margin:0 0 16px}.meta{color:var(--sub);font-size:12px}
       alert(ok?'변경내용을 복사했습니다. ChatGPT 대화에 붙여넣어 주세요.':'복사에 실패했습니다.');
     });
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  if(window.__syncOriginalChecklistV1) return;
+  window.__syncOriginalChecklistV1=true;
+  const prep=document.getElementById('prep'); if(!prep)return;
+  const tools=prep.querySelector('.prep-tools'); if(!tools)return;
+  if(tools.querySelector('.sync-origin-btn'))return;
+
+  const btn=document.createElement('button');
+  btn.type='button';
+  btn.className='sync-origin-btn';
+  btn.textContent='최신 원본으로 동기화';
+  tools.appendChild(btn);
+
+  btn.addEventListener('click',()=>{
+    const ok=confirm('이 휴대폰에서 직접 추가·이름수정·삭제한 기록만 초기화하고 GitHub 최신 원본으로 맞출까요?\n\n체크 완료/미완료 상태는 그대로 유지됩니다.');
+    if(!ok)return;
+    localStorage.removeItem('oki-check-custom-v1');
+    localStorage.removeItem('oki-check-renames-v1');
+    localStorage.removeItem('oki-check-deleted-v1');
+    location.reload();
+  });
 })();
 </script>
 
